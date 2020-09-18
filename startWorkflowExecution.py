@@ -4,18 +4,28 @@
 import os
 import glob
 
-import true as true
+var = True
 from bioblend import galaxy
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
-hl = gi.histories.get_histories()
+histories = gi.histories.get_histories()
+names = gi.datasets.get_datasets()
 
 
-def delete_history(self, history_id, purge=true):
+def delete_history(self, history_id, purge=True):
     payload = {}
     if purge is True:
         payload['purge'] = purge
     return self._delte(payload=payload, id=history_id)
+
+
+def download_dataset(self, history_id, dataset_id, file_path, user_default_filename=True):
+    meta = self.show_dataset(history_id, dataset_id)
+    if user_default_filename:
+        file_local_path = os.path.join(file_path, meta['name'])
+    else:
+        file_local_path = file_path
+    return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
 
 
 data = glob.glob('/Volumes/Base/PycharmProjects/MTB/*_R1_merged.fastq.gz')
@@ -37,6 +47,10 @@ for filename in data:
         "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
             l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes  --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
 
-    delete_history("UKER" + str(l), purge=true)
+    download_dataset("UKER" + str(l), dataset_id='', file_path='UKER' + str(l) + "", user_default_filename=False)
+    download_dataset("UKER" + str(l), dataset_id='', file_path='UKER' + str(l) + "", user_default_filename=False)
+    download_dataset("UKER" + str(l), dataset_id='', file_path='UKER' + str(l) + "", user_default_filename=False)
+
+    delete_history("UKER" + str(l), purge=True)
 
     l += 1
