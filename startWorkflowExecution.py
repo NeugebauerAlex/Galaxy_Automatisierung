@@ -16,6 +16,12 @@ def delete_history(self, history_id, purge=True):
         payload['purge'] = purge
     return self._delte(payload=payload, id=history_id)
 
+def get_datasets(self, limit=500, offset=0):
+           params = {
+            'limit': limit,
+            'offset': offset,
+        }
+        return self._get(params=params)
 
 def download_dataset(self, history_id, dataset_id, file_path, user_default_filename=True):
     meta = self.show_dataset(history_id, dataset_id)
@@ -37,7 +43,9 @@ for filename in data:
             l) + "_R1_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a0c15f4d91084599 --new_history_name UKER" + str(
             l))
     
-    
+    list = get_datasets(limit=500, offset=0)
+    print(list)
+
     os.system(
         "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
             l))
