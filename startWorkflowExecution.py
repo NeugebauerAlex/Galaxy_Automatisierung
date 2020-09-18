@@ -10,11 +10,6 @@ from bioblend import galaxy
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
 
-def delete_history(self, history_id, purge=True):
-    payload = {}
-    if purge is True:
-        payload['purge'] = purge
-    return self._delte(payload=payload, id=history_id)
 
 def get_datasets(self, limit=500, offset=0):
     params = {
@@ -36,6 +31,12 @@ class HistoryClient(Client):
         self.module = 'histories'
         super().__init__(galaxy_instance)
 
+    def delete_history(self, history_id, purge=True):
+        payload = {}
+        if purge is True:
+            payload['purge'] = purge
+        return self._delte(payload=payload, id=history_id)
+    
     def show_history(self, history_id, contents=True, deleted=None, visible=True, details=True, types=None):
         params = {}
         if contents:
