@@ -9,6 +9,19 @@ from bioblend import galaxy
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 
+def show_history(self, history_id, contents=True, deleted=None, visible=True, details=True, types=None):
+    params = {}
+        if contents:
+            if details:
+                params['details'] = details
+            if deleted is not None:
+                params['deleted'] = deleted
+            if visible is not None:
+                params['visible'] = visible
+            if types is not None:
+                params['types'] = types
+        return self._get(id=history_id, contents=contents, params=params)
+
 def delete_history(self, history_id, purge=True):
     payload = {}
     if purge is True:
@@ -41,8 +54,9 @@ for filename in data:
             l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
             l) + "_R1_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a0c15f4d91084599 --new_history_name UKER" + str(
             l))
-     
-     
+    
+    show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
+
     os.system(
         "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
             l))
