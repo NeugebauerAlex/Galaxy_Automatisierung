@@ -17,11 +17,11 @@ def delete_history(self, history_id, purge=True):
     return self._delte(payload=payload, id=history_id)
 
 def get_datasets(self, limit=500, offset=0):
-           params = {
-            'limit': limit,
-            'offset': offset,
-        }
-        return self._get(params=params)
+    params = {
+        'limit': limit,
+        'offset': offset,
+    }
+    return self._get(params=params)
 
 def download_dataset(self, history_id, dataset_id, file_path, user_default_filename=True):
     meta = self.show_dataset(history_id, dataset_id)
