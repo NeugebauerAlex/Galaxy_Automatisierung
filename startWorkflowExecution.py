@@ -32,7 +32,7 @@ def download_dataset(self, history_id, dataset_id, file_path, user_default_filen
         file_local_path = file_path
     return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
 
-class bioblend.galaxy.histories.HistoryClient(galaxy_instance)
+class bioblend.galaxy.histories.HistoryClient(galaxy_instance):
     def __init__(self, galaxy_instance):
         self.module = 'histories'
         super().__init__(galaxy_instance)
