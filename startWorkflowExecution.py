@@ -3,7 +3,6 @@
 
 import os
 import glob
-import bioblend
 
 data = glob.glob('/Volumes/Base/PycharmProjects/MTB/*_R1_merged.fastq.gz')
 
