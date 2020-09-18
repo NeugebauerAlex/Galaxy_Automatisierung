@@ -3,8 +3,13 @@
 
 import os
 import glob
+import logging
+import re
+import sys
+import time
 
 var = True
+import bioblend
 from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
