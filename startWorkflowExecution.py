@@ -32,7 +32,7 @@ def download_dataset(self, history_id, dataset_id, file_path, user_default_filen
         file_local_path = file_path
     return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
 
-class HistoryClient(Client):
+class bioblend.galaxy.histories.HistoryClient(galaxy_instance)
     def __init__(self, galaxy_instance):
         self.module = 'histories'
         super().__init__(galaxy_instance)
@@ -67,7 +67,7 @@ for filename in data:
             l) + "_R1_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a0c15f4d91084599 --new_history_name UKER" + str(
             l))
     
-    data_info = bioblend.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
+    data_info = galaxy_instance.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
     print(data_info)
     
     os.system(
