@@ -46,9 +46,9 @@ for filename in data:
         "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
             l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
 
-    download_dataset(history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'main', user_default_filename=False)
-    download_dataset(history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'annotation', user_default_filename=False)
-    download_dataset(history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'report', user_default_filename=False)
+    download_dataset(self, history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'main', user_default_filename=False)
+    download_dataset(self, history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'annotation', user_default_filename=False)
+    download_dataset(self, history_id='UKER' + str(l), dataset_id='', file_path='/Desktop/Ergebnisse_workflow/UKER' + str(l) + 'report', user_default_filename=False)
 
     delete_history(self, 'UKER' + str(l), purge=True)
 
