@@ -13,6 +13,8 @@ import bioblend
 from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
+l = 26
+
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
 hh = gi.histories.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
@@ -59,8 +61,6 @@ class HistoryClient(Client):
         return self._get(id=history_id, contents=contents, params=params)
 
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
-
-l = 26
 
 for filename in data:
     os.system(
