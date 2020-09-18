@@ -11,16 +11,16 @@ gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='
 
 def show_history(self, history_id, contents=True, deleted=None, visible=True, details=True, types=None):
     params = {}
-        if contents:
-            if details:
-                params['details'] = details
-            if deleted is not None:
-                params['deleted'] = deleted
-            if visible is not None:
-                params['visible'] = visible
-            if types is not None:
-                params['types'] = types
-        return self._get(id=history_id, contents=contents, params=params)
+    if contents:
+        if details:
+            params['details'] = details
+        if deleted is not None:
+            params['deleted'] = deleted
+        if visible is not None:
+            params['visible'] = visible
+        if types is not None:
+            params['types'] = types
+    return self._get(id=history_id, contents=contents, params=params)
 
 def delete_history(self, history_id, purge=True):
     payload = {}
