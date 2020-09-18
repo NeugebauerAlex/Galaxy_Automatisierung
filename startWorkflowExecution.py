@@ -8,6 +8,7 @@ var = True
 from bioblend import galaxy
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
+hl = gi.histories.get_histories()
 
 def delete_history(self, history_id, purge=True):
     payload = {}
@@ -54,7 +55,7 @@ for filename in data:
             l) + "_R1_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a0c15f4d91084599 --new_history_name UKER" + str(
             l))
     
-    data_info = galaxy.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
+    data_info = hl.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
     print(data_info)
     
     os.system(
