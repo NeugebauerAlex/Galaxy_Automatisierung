@@ -19,21 +19,65 @@ gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='
 hl = gi.histories.get_histories()
 hh = gi.histories.show_history(history_id = 'be8c8ac3dbd1dd54', contents=True, deleted=None, visible=True, details=True, types=None)
 
+class DatasetClient(Client):
 
-def get_datasets(self, limit=500, offset=0):
-    params = {
-        'limit': limit,
-        'offset': offset,
-    }
-    return self._get(params=params)
+    def get_datasets(self, limit=500, offset=0):
+        params = {
+            'limit': limit,
+            'offset': offset,
+        }
+        return self._get(params=params)
 
-def download_dataset(self, history_id, dataset_id, file_path, user_default_filename=True):
-    meta = self.show_dataset(history_id, dataset_id)
-    if user_default_filename:
-        file_local_path = os.path.join(file_path, meta['name'])
-    else:
-        file_local_path = file_path
-    return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
+    def download_dataset(self, dataset_id, file_path=None, use_default_filename=True, maxwait=12000):
+        dataset = self._block_until_dataset_terminal(dataset_id, maxwait=maxwait)
+        if not dataset['state'] == 'ok':
+            raise DatasetStateException("Dataset state is not 'ok'. Dataset id: %s, current state: %s" % (dataset_id, dataset['state']))
+
+        file_ext = dataset.get('file_ext')
+        # Resort to 'data' when Galaxy returns an empty or temporary extension
+        if not file_ext or file_ext == 'auto' or file_ext == '_sniff_':
+            file_ext = 'data'
+        # The preferred download URL is
+        # '/api/histories/<history_id>/contents/<dataset_id>/display?to_ext=<dataset_ext>'
+        # since the old URL:
+        # '/dataset/<dataset_id>/display/to_ext=<dataset_ext>'
+        # does not work when using REMOTE_USER with access disabled to
+        # everything but /api without auth
+        download_url = dataset['download_url'] + '?to_ext=' + file_ext
+        url = urljoin(self.gi.base_url, download_url)
+
+        stream_content = file_path is not None
+        r = self.gi.make_get_request(url, stream=stream_content)
+        r.raise_for_status()
+
+        if file_path is None:
+            if 'content-length' in r.headers and len(r.content) != int(r.headers['content-length']):
+                log.warning("Transferred content size does not match content-length header (%s != %s)", len(r.content), r.headers['content-length'])
+            return r.content
+        else:
+            if use_default_filename:
+                # Build a useable filename
+                filename = dataset['name'] + '.' + file_ext
+                # Now try to get a better filename from the response headers
+                # We expect tokens 'filename' '=' to be followed by the quoted filename
+                if 'content-disposition' in r.headers:
+                    tokens = list(shlex.shlex(r.headers['content-disposition'], posix=True))
+                    try:
+                        header_filepath = tokens[tokens.index('filename') + 2]
+                        filename = os.path.basename(header_filepath)
+                    except (ValueError, IndexError):
+                        pass
+                file_local_path = os.path.join(file_path, filename)
+            else:
+                file_local_path = file_path
+
+            with open(file_local_path, 'wb') as fp:
+                for chunk in r.iter_content(chunk_size=bioblend.CHUNK_SIZE):
+                    if chunk:
+                        fp.write(chunk)
+
+            # Return location file was saved to
+            return file_local_path
 
 class HistoryClient(Client):
     
