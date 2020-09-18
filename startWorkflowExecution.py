@@ -9,7 +9,6 @@ from bioblend import galaxy
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hist = gi.histories.get_histories()
-set_of_data = gi.datasets.get_datasets()
 
 def delete_history(self, history_id, purge=True):
     payload = {}
