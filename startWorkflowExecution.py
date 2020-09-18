@@ -31,18 +31,19 @@ def download_dataset(self, history_id, dataset_id, file_path, user_default_filen
         file_local_path = file_path
     return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
 
-def show_history(self, history_id, contents=True, deleted=None, visible=True, details=True, types=None):
-    params = {}
-    if contents:
-        if details:
-            params['details'] = details
-        if deleted is not None:
-            params['deleted'] = deleted
-        if visible is not None:
-            params['visible'] = visible
-        if types is not None:
-            params['types'] = types
-    return self._get(id=history_id, contents=contents, params=params)
+class HistoryClient(Client):
+    def show_history(self, history_id, contents=True, deleted=None, visible=True, details=True, types=None):
+        params = {}
+        if contents:
+            if details:
+                params['details'] = details
+            if deleted is not None:
+                params['deleted'] = deleted
+            if visible is not None:
+                params['visible'] = visible
+            if types is not None:
+                params['types'] = types
+        return self._get(id=history_id, contents=contents, params=params)
 
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
