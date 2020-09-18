@@ -15,7 +15,7 @@ from bioblend.galaxy.client import Client
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
-hh = gi.histories.show_history()
+hh = gi.histories.show_history(history_id='UKER' + str(l), contents=True, deleted=None, visible=True, details=True, types=None)
 
 
 def get_datasets(self, limit=500, offset=0):
