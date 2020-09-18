@@ -8,8 +8,6 @@ var = True
 from bioblend import galaxy
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
-histories = gi.histories.get_histories()
-names = gi.datasets.get_datasets()
 
 
 def delete_history(self, history_id, purge=True):
