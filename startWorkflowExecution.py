@@ -28,7 +28,7 @@ def download_dataset(self, history_id, dataset_id, file_path, user_default_filen
     return self.gi.datasets.download_dataset(dataset_id, file_path=file_local_path, user_default_filename=False)
 
 
-data = glob.glob('/Volumes/Base/PycharmProjects/MTB/*_R1_merged.fastq.gz')
+data = glob.glob('/Desktop/Input_Workflow/*_R1_merged.fastq.gz')
 
 l = 0
 
