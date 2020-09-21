@@ -18,7 +18,7 @@ l = 26
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
 hh = gi.histories.show_history(history_id, contents=True, deleted=None, visible=True, details=True, types=None)
-sd = gi.histories.show_matching_datasets((history_id, name_filter=None)
+sd = gi.histories.show_matching_datasets(history_id, name_filter=None)
 
 class DatasetClient(Client):
 
