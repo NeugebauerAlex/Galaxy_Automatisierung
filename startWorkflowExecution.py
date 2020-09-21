@@ -139,8 +139,9 @@ for filename in data:
     
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
-    print(hh)
-
+    contents = []
+    li = [item.get('id') for item in contents]
+    print(li)
   #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
  
     
