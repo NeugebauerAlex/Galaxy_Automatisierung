@@ -138,9 +138,10 @@ for filename in data:
             l))
     
 
+    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    print(hh)
 
-    hh = gi.histories.show_history(history_id = get_id["id"], contents=True, deleted=None, visible=True, details=True, types=None)
-    sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
+  #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
  
     
     os.system(
