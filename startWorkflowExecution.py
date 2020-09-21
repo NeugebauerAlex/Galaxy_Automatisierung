@@ -23,6 +23,10 @@ dl = gi.dataset.get_datasets()
 
 class DatasetClient(Client):
 
+    def __init__(self, galaxy_instance):
+        self.module = 'datasets'
+        super(DatasetClient, self).__init__(galaxy_instance)
+
     def get_datasets(self, limit=500, offset=0):
         params = {
             'limit': limit,
