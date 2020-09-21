@@ -7,6 +7,7 @@ import logging
 import re
 import sys
 import time
+import json
 
 var = True
 import bioblend
@@ -134,8 +135,12 @@ for filename in data:
     
 
     print(hl)
-    hh = gi.histories.show_history(history_id, contents=True, deleted=None, visible=True, details=True, types=None)
-    sd = gi.histories.show_matching_datasets(history_id, name_filter=None)
+    data_by_user = {}
+    for d in hl:
+        data_by_user[d["id"]] = d
+
+    hh = gi.histories.show_history(history_id = "data_by_user", contents=True, deleted=None, visible=True, details=True, types=None)
+    sd = gi.histories.show_matching_datasets(history_id = "data_by_user", name_filter=None)
     print(hh)
     print(sd)
     
