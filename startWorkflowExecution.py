@@ -86,18 +86,22 @@ class HistoryClient(Client):
         self.module = 'histories'
         super().__init__(galaxy_instance)
     
+    def get_histories(self, history_id=None, name=None, deleted=False):
+        """
+        """
+        if history_id is not None and name is not None:
+            raise ValueError('Provide only one argument between name or history_id, but not both')
+        histories = self._get(deleted=deleted)
+        if history_id is not None:
+            history = next((_ for _ in histories if _['id'] == history_id), None)
+            histories = [history] if history is not None else []
+        elif name is not None:
+            histories = [_ for _ in histories if _['name'] == name]
+        return histories
+
+    
     def show_matching_datasets(self, history_id, name_filter=None):
         """
-        Get dataset details for matching datasets within a history.
-
-        :type history_id: str
-        :param history_id: Encoded history ID
-
-        :type name_filter: str
-        :param name_filter: Only datasets whose name matches the
-                            ``name_filter`` regular expression will be
-                            returned; use plain strings for exact matches and
-                            None to match all datasets in the history.
         """
         if isinstance(name_filter, basestring):
             name_filter = re.compile(name_filter + '$')
@@ -135,13 +139,9 @@ for filename in data:
     
 
 
-    print(hl)
-    find_id = hl
-    get_id = json.loads(find_id)
     hh = gi.histories.show_history(history_id = get_id["id"], contents=True, deleted=None, visible=True, details=True, types=None)
     sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
-    print(hh)
-    print(sd)
+ 
     
     os.system(
         "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
