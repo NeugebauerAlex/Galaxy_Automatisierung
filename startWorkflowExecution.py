@@ -137,11 +137,11 @@ for filename in data:
 print(hl)
 
 find_id = hl
-    get_id = json.loads(find_id)
-        hh = gi.histories.show_history(history_id = get_id["id"], contents=True, deleted=None, visible=True, details=True, types=None)
-        sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
-        print(hh)
-        print(sd)
+get_id = json.loads(find_id)
+    hh = gi.histories.show_history(history_id = get_id["id"], contents=True, deleted=None, visible=True, details=True, types=None)
+    sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
+    print(hh)
+    print(sd)
     
     os.system(
         "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
