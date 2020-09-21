@@ -134,8 +134,8 @@ for filename in data:
             l))
     
 
-print(hl)
 
+        print(hl)
         find_id = hl
         get_id = json.loads(find_id)
         hh = gi.histories.show_history(history_id = get_id["id"], contents=True, deleted=None, visible=True, details=True, types=None)
