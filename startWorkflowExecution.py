@@ -139,8 +139,8 @@ for filename in data:
     for d in hl:
         data_by_user[d["id"]] = d
 
-    hh = gi.histories.show_history(history_id = "data_by_user", contents=True, deleted=None, visible=True, details=True, types=None)
-    sd = gi.histories.show_matching_datasets(history_id = "data_by_user", name_filter=None)
+    hh = gi.histories.show_history(history_id = data_by_user["id"], contents=True, deleted=None, visible=True, details=True, types=None)
+    sd = gi.histories.show_matching_datasets(history_id = data_by_user["id"], name_filter=None)
     print(hh)
     print(sd)
     
