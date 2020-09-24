@@ -18,7 +18,6 @@ l = 26
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
-dl = gi.datasets.get_datasets()
 
 
 class DatasetClient(Client):
@@ -145,8 +144,6 @@ for filename in data:
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
-    dl = gi.datasets.get_datasets(name='Galaxy-[MAF_report_of_variants].tabular')
-    print(dl)
 
 
   #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
