@@ -113,18 +113,18 @@ for filename in data:
   #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
  
     
-    os.system(
-        "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
+ #   os.system(
+ #       "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
             l))
 
-    os.system(
-        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
-            l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
+ #   os.system(
+  #      "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
+  #          l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
 
     gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'main', use_default_filename=True)
-    gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
-    gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
+   # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
+   # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
-    gi.histories.delete_history(self, li, purge=True)
+   # gi.histories.delete_history(self, li, purge=True)
 
     l += 1
