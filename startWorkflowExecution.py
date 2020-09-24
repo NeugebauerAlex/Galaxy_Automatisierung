@@ -42,12 +42,7 @@ class DatasetClient(Client):
         # Resort to 'data' when Galaxy returns an empty or temporary extension
         if not file_ext or file_ext == 'auto' or file_ext == '_sniff_':
             file_ext = 'data'
-        # The preferred download URL is
-        # '/api/histories/<history_id>/contents/<dataset_id>/display?to_ext=<dataset_ext>'
-        # since the old URL:
-        # '/dataset/<dataset_id>/display/to_ext=<dataset_ext>'
-        # does not work when using REMOTE_USER with access disabled to
-        # everything but /api without auth
+
         download_url = dataset['download_url'] + '?to_ext=' + file_ext
         url = urljoin(self.gi.base_url, download_url)
 
@@ -103,7 +98,6 @@ class HistoryClient(Client):
             histories = [_ for _ in histories if _['name'] == name]
         return histories
 
-    
     def show_matching_datasets(self, history_id, name_filter=None):
         """
         """
