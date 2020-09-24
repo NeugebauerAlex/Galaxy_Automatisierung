@@ -108,9 +108,9 @@ for filename in data:
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
-    li_normal = li[2:2]
-    st = str(li_normal)
-    print(st)
+    new_li = li[:li.rfind("'")]
+    print(new_li)
+
 
 
   #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
