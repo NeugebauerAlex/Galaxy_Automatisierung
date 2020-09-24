@@ -108,9 +108,8 @@ for filename in data:
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
-    new_li = str(li)
-    end_li = li[:li.rfind("'")]
-    print(end_li)
+    li.remove('[',']')
+    print(li)
 
 
 
