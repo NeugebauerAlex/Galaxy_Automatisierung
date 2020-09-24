@@ -108,9 +108,6 @@ for filename in data:
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
-    print(li)
-    li_new = str(li)
-    print(li_new)
     li_element = li[0]
     print (li_element)
     li_element_string = str(li_element)
@@ -130,7 +127,7 @@ for filename in data:
   #      "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
   #          l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
 
-    gi.histories.download_dataset(history_id=li_element_string, dataset_id='', file_path='/home/neugebax/UKER_main', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id='', file_path='/home/neugebax/UKER_main', use_default_filename=True)
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
