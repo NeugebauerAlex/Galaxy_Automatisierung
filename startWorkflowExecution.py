@@ -110,7 +110,7 @@ for filename in data:
     li = [item.get('id') for item in hh]
     index = 0
     string = ''
-    string = string + li
+    string = string + li[index]
 
 
 
