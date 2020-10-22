@@ -129,9 +129,9 @@ for filename in data:
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
-    
-    not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='[MAF_report_of_variants].tabular')
-    print(not_data)
 
     #gi.histories.delete_history(history_id=li_element, purge=True)
     #l += 1
+
+not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='[MAF_report_of_variants].tabular')
+print(not_data)
