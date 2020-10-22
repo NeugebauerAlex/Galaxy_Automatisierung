@@ -18,7 +18,6 @@ l = 40
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
-gl = gi.datasets.show_dataset()
 
 
 class DatasetClient(Client):
@@ -130,9 +129,8 @@ for filename in data:
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
-
-    daten = gi.datasets.get_datasets(limit=500, offset=0)
-    print(daten)
+    gl = gi.datasets.get_datasets(limit=500, offset=0)
+    print(gl)
 
     #gi.histories.delete_history(history_id=li_element, purge=True)
     #l += 1
