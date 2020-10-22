@@ -129,6 +129,6 @@ for filename in data:
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'annotation', use_default_filename=True)
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
-    gi.histories.delete_history(self, history_id=li_element, purge=True)
+    gi.histories.delete_history(history_id=li_element, purge=True)
 
     l += 1
