@@ -15,6 +15,7 @@ from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
 l = 40
+t = 10800
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
@@ -130,8 +131,9 @@ for filename in data:
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
 
-    #gi.histories.delete_history(history_id=li_element, purge=True)
+ 
     #l += 1
-
+time.sleep(t)
 not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='[MAF_report_of_variants].tabular')
 print(not_data)
+gi.histories.delete_history(history_id=li_element, purge=True)
