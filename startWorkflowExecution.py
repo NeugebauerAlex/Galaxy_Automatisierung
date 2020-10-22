@@ -130,7 +130,7 @@ for filename in data:
    # gi.histories.download_dataset(history_id= li, dataset_id='', file_path='/home/neugebax/UKER' + str(l) + 'report', use_default_filename=True)
 
 
-    daten = get_datasets(limit=500, offset=0)
+    daten = gi.get_datasets(limit=500, offset=0)
     print(daten)
 
     #gi.histories.delete_history(history_id=li_element, purge=True)
