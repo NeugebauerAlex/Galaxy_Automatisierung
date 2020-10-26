@@ -135,8 +135,7 @@ for filename in data:
     #l += 1
     time.sleep(t)
     
-    find_id = bioblend.galaxy.datasets.DatasetClient.get_datasets(limit=500, offset=0)
-    print(find_id)
+    gi.bioblend.galaxy.datasets.DatasetClient.get_datasets(limit=500, offset=0)
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
     gi.histories.download_dataset(history_id=li_element, dataset_id=li_element, file_path='/home/neugebax/Download', use_default_filename=True)
 #not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='[MAF_report_of_variants].tabular')
