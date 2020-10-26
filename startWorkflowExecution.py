@@ -8,6 +8,10 @@ import re
 import sys
 import time
 import json
+import logging
+import shlex
+import time
+from urllib.parse import urljoin
 
 var = True
 import bioblend
