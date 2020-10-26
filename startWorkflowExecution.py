@@ -135,7 +135,7 @@ for filename in data:
     #l += 1
     time.sleep(t)
     
-    find_id = gi.histories.get_datasets(limit=500, offset=0)
+    find_id = gi.datasets.get_datasets(limit=500, offset=0)
     print(find_id)
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
     gi.histories.download_dataset(history_id=li_element, dataset_id=li_element, file_path='/home/neugebax/Download', use_default_filename=True)
