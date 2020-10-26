@@ -19,7 +19,6 @@ t = 300
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
-dl = bioblend.galaxy.datasets.DatasetClient.get_datasets()
 
 
 class DatasetClient(Client):
@@ -136,7 +135,7 @@ for filename in data:
     #l += 1
     time.sleep(t)
     
-    find_id = bioblend.galaxy.datasets.DatasetClient.get_datasets(limit=500, offset=0)
+    find_id = bioblend.galaxy.datasets.DatasetClient.get_datasets(self, limit=500, offset=0)
     print(find_id)
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
     gi.histories.download_dataset(history_id=li_element, dataset_id=li_element, file_path='/home/neugebax/Download', use_default_filename=True)
