@@ -134,7 +134,7 @@ for filename in data:
  
     #l += 1
     time.sleep(t)
-    bioblend.galaxy.datasets.DatasetClient.download_dataset(history_id=li_element, dataset_id=li_element, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id=li_element, file_path='/home/neugebax/Download', use_default_filename=True)
 #not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='[MAF_report_of_variants].tabular')
 #print(not_data)
     gi.histories.delete_history(history_id=li_element, purge=True)
