@@ -143,13 +143,12 @@ for filename in data:
     no_data = gi.histories.show_history(li_element, contents=False)
     print(no_data)
     find_id = no_data['state_ids']['ok']
-    print(find_id)
-    print(find_id[1])
+    find_id_safe = find_id[1]
 
 # data_set_download = str(not_data)
   
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-    gi.histories.download_dataset(history_id=li_element, dataset_id=data_set_download, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
     
     # History löschen funktioniert
     #gi.histories.delete_history(history_id=li_element, purge=True)
