@@ -151,4 +151,4 @@ for filename in data:
     gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
     
     # History löschen funktioniert
-    #gi.histories.delete_history(history_id=li_element, purge=True)
+    gi.histories.delete_history(history_id=li_element, purge=True)
