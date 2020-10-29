@@ -140,9 +140,10 @@ for filename in data:
     time.sleep(t)
 
     not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy6-[Trimmed_forward_reads_of_UKER40_R1_merged.fastq].fastqsanger.gz')
+    data_set_download = str(not_data)
     print(not_data)
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-    gi.histories.download_dataset(history_id=li_element, dataset_id=not_data, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id=data_set_download, file_path='/home/neugebax/Download', use_default_filename=True)
     
     # History löschen funktioniert
     #gi.histories.delete_history(history_id=li_element, purge=True)
