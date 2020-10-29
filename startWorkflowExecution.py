@@ -141,9 +141,8 @@ for filename in data:
 
  # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
     no_data = gi.histories.show_history(li_element, contents=False)
-    print(no_data)
     find_id = no_data['state_ids']['ok']
-    find_id_safe = find_id[1]
+    find_id_safe = find_id[23]
 
 # data_set_download = str(not_data)
   
