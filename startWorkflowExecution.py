@@ -19,7 +19,7 @@ from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
 l = 40
-t = 7200
+t = 2600
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
@@ -142,7 +142,7 @@ for filename in data:
  # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
     no_data = gi.histories.show_history(li_element, contents=False)
     find_id = no_data['state_ids']['ok']
-    find_id_safe = find_id[23]
+    find_id_safe = find_id[14]
 
 # data_set_download = str(not_data)
   
