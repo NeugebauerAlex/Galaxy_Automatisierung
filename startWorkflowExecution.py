@@ -141,9 +141,13 @@ for filename in data:
 
  # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
     no_data = gi.histories.show_history(li_element, contents=False)
+    data_set_id = json.loads(no_data) 
+    find_id = data_set_id['state_ids']['ok']
+    print(find_id)
+    print(find_id[1])
 
 # data_set_download = str(not_data)
-    print(no_data)
+  
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
     gi.histories.download_dataset(history_id=li_element, dataset_id=data_set_download, file_path='/home/neugebax/Download', use_default_filename=True)
     
