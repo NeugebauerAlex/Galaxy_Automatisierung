@@ -22,7 +22,7 @@ l = 40
 m = 60
 z = 900
 t = 9000
-g = 'abafdf086c375ee5'
+g = abafdf086c375ee5
 
 
 
@@ -137,7 +137,7 @@ for filename in data:
   #  time.sleep(m)
 
     #Starte zweiten Workflow
-    gehe = int(g)
+    gehe = int(float(g))
     os.system(
       "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER_ZWEI")%gehe
 
