@@ -106,11 +106,11 @@ class HistoryClient(Client):
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
-    os.system(
-        "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
-            l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
-            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
-            l))
+ #   os.system(
+  #      "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
+ #           l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
+ #           l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
+   #         l))
     
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
@@ -119,7 +119,7 @@ for filename in data:
     li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
-    time.sleep(t)
+  #  time.sleep(t)
 
     # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
     no_data = gi.histories.show_history(li_element, contents=False)
