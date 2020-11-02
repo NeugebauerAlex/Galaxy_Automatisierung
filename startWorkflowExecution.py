@@ -19,6 +19,7 @@ from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
 l = 40
+z = 900
 t = 2600
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
@@ -116,16 +117,6 @@ for filename in data:
     li_element = li[0]
     li_element_string = str(li_element)
 
-
-
-
-  #  sd = gi.histories.show_matching_datasets(history_id = get_id["id"], name_filter=None)
- 
-    
- #   os.system(
- #       "python3 run_workflow_panel_variant_annotation.py --variants_input --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(
- #           l))
-
  #   os.system(
   #      "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
   #          l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
@@ -151,3 +142,30 @@ for filename in data:
     
     # History löschen funktioniert
     gi.histories.delete_history(history_id=li_element, purge=True)
+
+    #Starte zweiten Workflow
+    os.system(
+      "python3 run_workflow_panel_variant_annotation.py --variants_input "find_id_safe" --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l))
+
+    # History ID des zweiten Workflows herauskriegen
+    zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    zi = [item.get('id') for item in zw]
+    zi_element = zi[0]
+    zi_element_string = str(zi_element)  
+
+    # Warte bis Durchgang vollzogen ist 
+       time.sleep(z)
+
+    # Dataset ID finden und herunterladen
+    data_set_zwei = gi.histories.show_history(zi_element, contents=False)
+    find_id_zwei = data_set_zwei['state_ids']['ok']
+    find_id_safe_zwei = find_id_zwei[14] 
+
+    # Lade das Dataset herunter
+    gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download', use_default_filename=True)
+
+    # History löschen funktioniert
+    gi.histories.delete_history(history_id=zi_element, purge=True)
+
+
+
