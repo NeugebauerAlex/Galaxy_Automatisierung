@@ -23,6 +23,8 @@ m = 60
 z = 900
 t = 9000
 
+gehe = abafdf086c375ee5
+
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
 
@@ -113,29 +115,29 @@ for filename in data:
    #         l))
     
 
-    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
-    li = [item.get('id') for item in hh]
-    li_element = li[0]
-    li_element_string = str(li_element)
+  #  hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+  #  li = [item.get('id') for item in hh]
+  #  li_element = li[0]
+  #  li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
   #  time.sleep(t)
 
     # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
-    no_data = gi.histories.show_history(li_element, contents=False)
-    find_id = no_data['state_ids']['ok']
-    find_id_safe = find_id[25]
+  #  no_data = gi.histories.show_history(li_element, contents=False)
+  #  find_id = no_data['state_ids']['ok']
+   # find_id_safe = find_id[25]
   
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
+ #   gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
     
 
     #Warte kurz bis zweiter Workflow losgeht
-    time.sleep(m)
+  #  time.sleep(m)
 
     #Starte zweiten Workflow
     os.system(
-      "python3 run_workflow_panel_variant_annotation.py --variants_input {} --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l)).format(find_id_safe)
+      "python3 run_workflow_panel_variant_annotation.py --variants_input gehe --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l))
 
     # History ID des zweiten Workflows herauskriegen
     zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
