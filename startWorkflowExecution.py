@@ -22,7 +22,7 @@ l = 40
 m = 60
 z = 900
 t = 9000
-g = abafdf086c375ee5
+g = str(abafdf086c375ee5)
 
 
 
