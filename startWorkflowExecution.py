@@ -22,8 +22,7 @@ l = 40
 m = 60
 z = 900
 t = 9000
-
-gehe = abafdf086c375ee5
+g = 'abafdf086c375ee5'
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
