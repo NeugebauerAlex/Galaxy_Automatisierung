@@ -19,6 +19,7 @@ from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
 l = 40
+m = 60
 z = 900
 t = 2600
 
@@ -143,6 +144,9 @@ for filename in data:
     # History löschen funktioniert
     gi.histories.delete_history(history_id=li_element, purge=True)
 
+    #Warte kurz bis zweiter Workflow losgeht
+    time.sleep(m)
+
     #Starte zweiten Workflow
     os.system(
       "python3 run_workflow_panel_variant_annotation.py --variants_input "find_id_safe" --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l))
@@ -154,7 +158,7 @@ for filename in data:
     zi_element_string = str(zi_element)  
 
     # Warte bis Durchgang vollzogen ist 
-       time.sleep(z)
+    time.sleep(z)
 
     # Dataset ID finden und herunterladen
     data_set_zwei = gi.histories.show_history(zi_element, contents=False)
