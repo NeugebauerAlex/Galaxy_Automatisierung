@@ -21,7 +21,7 @@ from bioblend.galaxy.client import Client
 l = 40
 m = 60
 z = 900
-t = 2600
+t = 7500
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
 hl = gi.histories.get_histories()
@@ -129,8 +129,6 @@ for filename in data:
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
     gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
     
-    # History löschen funktioniert
-    gi.histories.delete_history(history_id=li_element, purge=True)
 
     #Warte kurz bis zweiter Workflow losgeht
     time.sleep(m)
@@ -156,8 +154,11 @@ for filename in data:
     # Lade das Dataset herunter
     gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download', use_default_filename=True)
 
+
     # History löschen funktioniert
+    gi.histories.delete_history(history_id=li_element, purge=True)
     gi.histories.delete_history(history_id=zi_element, purge=True)
+
 
      #   os.system(
   #      "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
