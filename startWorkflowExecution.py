@@ -136,7 +136,7 @@ for filename in data:
 
     #Starte zweiten Workflow
     os.system(
-      "python3 run_workflow_panel_variant_annotation.py --variants_input gehe --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l))
+      "python3 run_workflow_panel_variant_annotation.py --variants_input g --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=86cf1d3beeec9f1c --new_history_name UKER" + str(l))
 
     # History ID des zweiten Workflows herauskriegen
     zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
