@@ -106,36 +106,34 @@ class HistoryClient(Client):
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
-  #  os.system(
-   #     "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
-  #          l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
-  #          l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
-     #       l))
+    os.system(
+        "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
+           l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
+            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
+           l))
     
 
- #   hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
-  #  li = [item.get('id') for item in hh]
-  #  li_element = li[0]
- #   li_element_string = str(li_element)
+    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    li = [item.get('id') for item in hh]
+    li_element = li[0]
+    li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
- #   time.sleep(t)
+    time.sleep(t)
 
-    # not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
-  #  no_data = gi.histories.show_history(li_element, contents=False)
-  #  find_id = no_data['state_ids']['ok']
-  #  find_id_safe = find_id[25]
+     not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
+    no_data = gi.histories.show_history(li_element, contents=False)
+    find_id = no_data['state_ids']['ok']
+    find_id_safe = find_id[25]
   
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-  #  gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
     
 
     #Warte kurz bis zweiter Workflow losgeht
-   # time.sleep(m)
+    time.sleep(m)
 
     #Starte zweiten Workflow
-    find_id_safe = ('3031e83883b39f24')
-
     input = (find_id_safe)
 
     os.system(
@@ -159,16 +157,41 @@ for filename in data:
     gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download', use_default_filename=True)
 
 
+    #Warte kurz bis dritter Workflow losgeht
+    time.sleep(m)
+
+    # Starte dritten Workflow
+    os.system(
+        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
+           l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
+
+    # History ID des dritten Workflows herauskriegen
+    ll = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    bi = [item.get('id') for item in ll]
+    bi_element = bi[0]
+    bi_element_string = str(bi_element)
+
+    # Warte bis Durchgang vollzogen ist 
+    time.sleep(z)
+
+    # Dataset ID finden und herunterladen
+    data_set_drei = gi.histories.show_history(bi_element, contents=False)
+    find_id_drei = data_set_drei['state_ids']['ok']
+    find_id_safe_drei = find_id_drei[14]
+
+    # Lade das Dataset herunter
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=find_id_safe_drei, file_path='/home/neugebax/Download', use_default_filename=True)
+
+
+    #Warte kurz bis dritter Workflow losgeht
+    time.sleep(m)
+
     # History löschen funktioniert
     gi.histories.delete_history(history_id=li_element, purge=True)
     gi.histories.delete_history(history_id=zi_element, purge=True)
+    gi.histories.delete_history(history_id=bi_element, purge=True)
 
-
-     #   os.system(
-  #      "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
-  #          l) + "--gemini_db_of_variants --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b")
-
-      #l += 1
+    l += 1
 
 
 
