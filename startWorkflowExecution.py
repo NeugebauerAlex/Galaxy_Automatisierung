@@ -139,6 +139,8 @@ for filename in data:
     os.system(
       "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 8aab8fda5bfd5997 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
 
+    time.sleep(z)
+    
     # History ID des zweiten Workflows herauskriegen
     zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     zi = [item.get('id') for item in zw]
@@ -146,7 +148,7 @@ for filename in data:
     zi_element_string = str(zi_element)  
 
     # Warte bis Durchgang vollzogen ist 
-    time.sleep(z)
+    time.sleep(m)
 
     # Dataset ID finden und herunterladen
     data_set_zwei = gi.histories.show_history(zi_element, contents=False)
