@@ -137,7 +137,7 @@ for filename in data:
     input = (find_id_safe)
 
     os.system(
-      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ 53417d7942e03f05 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
+      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ c344e7e8c8cc61aa --civic_data__bed_ 3031e83883b39f24 --cgi_biomarkers__bed_ d92b54733736573a --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
 
     time.sleep(z)
     
