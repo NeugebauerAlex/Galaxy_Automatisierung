@@ -121,7 +121,6 @@ for filename in data:
     # Warte bis Durchgang fertig ist
     time.sleep(t)
 
-    not_data = gi.histories.show_matching_datasets(history_id=li_element, name_filter='Galaxy11-[FastQC_on_data_2__RawData]')
     no_data = gi.histories.show_history(li_element, contents=False)
     find_id = no_data['state_ids']['ok']
     find_id_safe = find_id[25]
