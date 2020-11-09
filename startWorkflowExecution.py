@@ -20,7 +20,7 @@ from bioblend.galaxy.client import Client
 
 l = 40
 m = 60
-z = 1400
+z = 1100
 t = 9000
 
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='64b1a4440d46af31d546df70cc5db50d')
@@ -151,7 +151,7 @@ for filename in data:
     # Dataset ID finden und herunterladen
     data_set_zwei = gi.histories.show_history(zi_element, contents=False)
     find_id_zwei = data_set_zwei['state_ids']['ok']
-    find_id_safe_zwei = find_id_zwei[4] 
+    find_id_safe_zwei = find_id_zwei[7] 
 
     # Lade das Dataset herunter
     gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download', use_default_filename=True)
