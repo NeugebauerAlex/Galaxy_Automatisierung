@@ -20,6 +20,7 @@ from bioblend.galaxy.client import Client
 
 l = 40
 m = 60
+o = 180
 z = 1100
 t = 9000
 
