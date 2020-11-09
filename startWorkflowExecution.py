@@ -142,7 +142,7 @@ for filename in data:
     # History ID des zweiten Workflows herauskriegen
     zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     zi = [item.get('id') for item in zw]
-    zi_element = zi[0]
+    zi_element = zi[1]
     zi_element_string = str(zi_element)  
 
     # Warte bis Durchgang vollzogen ist 
