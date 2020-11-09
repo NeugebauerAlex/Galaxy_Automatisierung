@@ -151,7 +151,7 @@ for filename in data:
     # Dataset ID finden und herunterladen
     data_set_zwei = gi.histories.show_history(zi_element, contents=False)
     find_id_zwei = data_set_zwei['state_ids']['ok']
-    find_id_safe_zwei = find_id_zwei[12] 
+    find_id_safe_zwei = find_id_zwei[13] 
 
     # Lade das Dataset herunter
  #   gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
