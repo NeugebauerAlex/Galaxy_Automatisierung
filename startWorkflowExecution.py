@@ -165,8 +165,7 @@ for filename in data:
     input = (find_id_safe_zwei)
     
     os.system(
-        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
-           l) + "--gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
+        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(l) + "--gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
 
     # History ID des dritten Workflows herauskriegen
     ll = gi.histories.get_histories(history_id=None, name="UKER_DREI", deleted=False)
