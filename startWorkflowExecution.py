@@ -161,11 +161,11 @@ for filename in data:
     time.sleep(m)
 
     # Starte dritten Workflow
-    input_zwei = (find_id_safe_zwei)
+    input = (find_id_safe_zwei)
     
     os.system(
         "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER" + str(
-           l) + "--gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997  --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b"%input_zwei)
+           l) + "--gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
 
     # History ID des dritten Workflows herauskriegen
     ll = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
@@ -179,7 +179,7 @@ for filename in data:
     # Dataset ID finden und herunterladen
     data_set_drei = gi.histories.show_history(bi_element, contents=False)
     find_id_drei = data_set_drei['state_ids']['ok']
-    find_id_safe_drei = find_id_drei[14]
+    find_id_safe_drei = find_id_drei[7]
 
     # Lade das Dataset herunter
     gi.histories.download_dataset(history_id=bi_element, dataset_id=find_id_safe_drei, file_path='/home/neugebax/Download', use_default_filename=True)
