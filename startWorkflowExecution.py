@@ -180,10 +180,16 @@ for filename in data:
     # Dataset ID finden und herunterladen
     data_set_drei = gi.histories.show_history(bi_element, contents=False)
     find_id_drei = data_set_drei['state_ids']['ok']
-    find_id_safe_drei = find_id_drei[7]
+    maf_report = find_id_drei[5]
+    annotation_report = find_id_drei[6]
+    gene_report = find_id_drei[11]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=find_id_safe_drei, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/Download', use_default_filename=True)
+
+
 
 
     #Warte kurz bis löschen von Histories losgeht
