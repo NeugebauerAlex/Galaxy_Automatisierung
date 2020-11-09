@@ -126,14 +126,13 @@ for filename in data:
     find_id_safe = find_id[25]
   
     # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download/40', use_default_filename=True)
     
 
     #Warte kurz bis zweiter Workflow losgeht
     time.sleep(m)
 
     #Starte zweiten Workflow
-    find_id_safe = 'a40911b9c9ac1445'
     input = (find_id_safe)
 
     os.system(
@@ -154,14 +153,13 @@ for filename in data:
     find_id_safe_zwei = find_id_zwei[12] 
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download/40', use_default_filename=True)
 
 
     #Warte kurz bis dritter Workflow losgeht
     time.sleep(m)
 
     # Starte dritten Workflow
-    find_id_safe_zwei = 'db8347c232c96602'
     input = (find_id_safe_zwei)
     
     os.system(
@@ -184,9 +182,9 @@ for filename in data:
     gene_report = find_id_drei[10]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/Download', use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/Download', use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/Download', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/Download/40', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/Download/40', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/Download/40', use_default_filename=True)
 
     #Warte kurz bis löschen von Histories losgeht
     time.sleep(m)
