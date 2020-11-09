@@ -140,7 +140,7 @@ for filename in data:
       "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
     
     # History ID des zweiten Workflows herauskriegen
-    zw = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
     zi = [item.get('id') for item in zw]
     zi_element = zi[0]
     zi_element_string = str(zi_element)  
@@ -168,7 +168,7 @@ for filename in data:
            l) + "--gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes d513c0e53ab96eac --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
 
     # History ID des dritten Workflows herauskriegen
-    ll = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    ll = gi.histories.get_histories(history_id=None, name="UKER_DREI", deleted=False)
     bi = [item.get('id') for item in ll]
     bi_element = bi[0]
     bi_element_string = str(bi_element)
