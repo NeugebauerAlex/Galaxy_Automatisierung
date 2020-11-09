@@ -20,7 +20,6 @@ from bioblend.galaxy.client import Client
 
 l = 40
 m = 60
-o = 180
 z = 1100
 t = 9000
 
@@ -169,7 +168,7 @@ for filename in data:
         "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER --gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes c9213a53ccefcc61 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
 
     # Warte bis Durchgang vollzogen ist 
-    time.sleep(o)
+    time.sleep(m)
 
     # History ID des dritten Workflows herauskriegen
     ll = gi.histories.get_histories(history_id=None, name="UKER_DREI", deleted=False)
