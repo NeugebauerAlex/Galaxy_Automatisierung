@@ -179,9 +179,9 @@ for filename in data:
     # Dataset ID finden und herunterladen
     data_set_drei = gi.histories.show_history(bi_element, contents=False)
     find_id_drei = data_set_drei['state_ids']['ok']
-    maf_report = find_id_drei[5]
-    annotation_report = find_id_drei[6]
-    gene_report = find_id_drei[11]
+    maf_report = find_id_drei[1]
+    annotation_report = find_id_drei[2]
+    gene_report = find_id_drei[7]
 
     # Lade das Dataset herunter
     gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/Download', use_default_filename=True)
