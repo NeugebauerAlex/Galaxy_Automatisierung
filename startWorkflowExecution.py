@@ -175,7 +175,7 @@ for filename in data:
     bi_element_string = str(bi_element)
 
     # Warte bis Durchgang vollzogen ist 
-    time.sleep(z)
+    time.sleep(0)
 
     # Dataset ID finden und herunterladen
     data_set_drei = gi.histories.show_history(bi_element, contents=False)
@@ -186,13 +186,13 @@ for filename in data:
     gi.histories.download_dataset(history_id=bi_element, dataset_id=find_id_safe_drei, file_path='/home/neugebax/Download', use_default_filename=True)
 
 
-    #Warte kurz bis dritter Workflow losgeht
-    time.sleep(o)
+    #Warte kurz bis löschen von Histories losgeht
+    time.sleep(m)
 
     # History löschen funktioniert
-    gi.histories.delete_history(history_id=li_element, purge=True)
-    gi.histories.delete_history(history_id=zi_element, purge=True)
-    gi.histories.delete_history(history_id=bi_element, purge=True)
+   # gi.histories.delete_history(history_id=li_element, purge=True)
+   # gi.histories.delete_history(history_id=zi_element, purge=True)
+   # gi.histories.delete_history(history_id=bi_element, purge=True)
 
     l += 1
 
