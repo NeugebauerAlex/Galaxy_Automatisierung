@@ -106,7 +106,7 @@ class HistoryClient(Client):
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
-#    os.system(
+    os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
            l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
             l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
