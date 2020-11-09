@@ -187,7 +187,7 @@ for filename in data:
 
 
     #Warte kurz bis dritter Workflow losgeht
-    time.sleep(m)
+    time.sleep(o)
 
     # History löschen funktioniert
     gi.histories.delete_history(history_id=li_element, purge=True)
