@@ -106,6 +106,9 @@ class HistoryClient(Client):
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
+
+    os.mkdir('Download/UKER' + str(l))
+
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
            l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
@@ -174,9 +177,9 @@ for filename in data:
     gene_report = find_id_drei[10]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
 
     #Warte kurz bis löschen von Histories losgeht
     time.sleep(m)
