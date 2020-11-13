@@ -115,52 +115,53 @@ for filename in data:
             if exc.errno != errno.EEXIST:
                 raise
 
-    os.system(
-        "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
-           l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
-            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
-           l))
+#    os.system(
+#        "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
+#           l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
+#            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
+#           l))
     
 
-    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
-    li = [item.get('id') for item in hh]
-    li_element = li[0]
-    li_element_string = str(li_element)
+#    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+#    li = [item.get('id') for item in hh]
+#    li_element = li[0]
+#    li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
-    time.sleep(t)
+#    time.sleep(t)
 
-    no_data = gi.histories.show_history(li_element, contents=False)
-    find_id = no_data['state_ids']['ok']
-    find_id_safe = find_id[25]
+#    no_data = gi.histories.show_history(li_element, contents=False)
+#    find_id = no_data['state_ids']['ok']
+#    find_id_safe = find_id[25]
   
     #Warte kurz bis zweiter Workflow losgeht
-    time.sleep(m)
+#    time.sleep(m)
 
     #Starte zweiten Workflow
-    input = (find_id_safe)
+#    input = (find_id_safe)
 
-    os.system(
-      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
+#    os.system(
+#      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
     
     # History ID des zweiten Workflows herauskriegen
-    zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
-    zi = [item.get('id') for item in zw]
-    zi_element = zi[0]
-    zi_element_string = str(zi_element)  
+#    zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
+#    zi = [item.get('id') for item in zw]
+#    zi_element = zi[0]
+#    zi_element_string = str(zi_element)  
 
     # Warte bis Durchgang vollzogen ist 
-    time.sleep(z)
+#    time.sleep(z)
 
     # Dataset ID finden und herunterladen
-    data_set_zwei = gi.histories.show_history(zi_element, contents=False)
-    find_id_zwei = data_set_zwei['state_ids']['ok']
-    find_id_safe_zwei = find_id_zwei[13] 
+#    data_set_zwei = gi.histories.show_history(zi_element, contents=False)
+#    find_id_zwei = data_set_zwei['state_ids']['ok']
+#    find_id_safe_zwei = find_id_zwei[13] 
 
     #Warte kurz bis dritter Workflow losgeht
-    time.sleep(m)
+#    time.sleep(m)
 
     # Starte dritten Workflow
+    find_id_safe_zwei = ''
     input = (find_id_safe_zwei)
     
     os.system(
