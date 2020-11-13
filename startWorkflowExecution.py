@@ -128,14 +128,14 @@ for filename in data:
     li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
-    time.sleep(t)
+#    time.sleep(t)
 
     no_data = gi.histories.show_history(li_element, contents=False)
     find_id = no_data['state_ids']['ok']
     find_id_safe = find_id[25]
   
     #Warte kurz bis zweiter Workflow losgeht
-    time.sleep(m)
+#    time.sleep(m)
 
     #Starte zweiten Workflow
     input = (find_id_safe)
