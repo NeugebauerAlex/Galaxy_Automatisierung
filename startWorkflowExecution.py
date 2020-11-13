@@ -104,10 +104,10 @@ class HistoryClient(Client):
         return self._get(id=history_id, contents=contents, params=params)
 
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
+os.mkdir('/home/neugebax/galaxy-test/Download/UKER' + str(l))
+
 
 for filename in data:
-
-    os.mkdir('/home/neugebax/galaxy-test/Download/UKER' + str(l))
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
