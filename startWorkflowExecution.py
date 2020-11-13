@@ -125,15 +125,10 @@ for filename in data:
     find_id = no_data['state_ids']['ok']
     find_id_safe = find_id[25]
   
-    # Downloaden aller Daten funktioniert, Dataset_id eingrenzen fehlt?
-    gi.histories.download_dataset(history_id=li_element, dataset_id=find_id_safe, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
-    
-
     #Warte kurz bis zweiter Workflow losgeht
     time.sleep(m)
 
     #Starte zweiten Workflow
-    find_id_safe = 'e70145b0524c2962'
     input = (find_id_safe)
 
     os.system(
@@ -152,9 +147,6 @@ for filename in data:
     data_set_zwei = gi.histories.show_history(zi_element, contents=False)
     find_id_zwei = data_set_zwei['state_ids']['ok']
     find_id_safe_zwei = find_id_zwei[13] 
-
-    # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=zi_element, dataset_id=find_id_safe_zwei, file_path='/home/neugebax/Download/UKER40', use_default_filename=True)
 
     #Warte kurz bis dritter Workflow losgeht
     time.sleep(m)
