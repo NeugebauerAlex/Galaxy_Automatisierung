@@ -122,10 +122,10 @@ for filename in data:
 #           l))
     
 
-#    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
-#    li = [item.get('id') for item in hh]
-#    li_element = li[0]
-#    li_element_string = str(li_element)
+    hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
+    li = [item.get('id') for item in hh]
+    li_element = li[0]
+    li_element_string = str(li_element)
 
     # Warte bis Durchgang fertig ist
 #    time.sleep(t)
@@ -144,10 +144,10 @@ for filename in data:
 #      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key 64b1a4440d46af31d546df70cc5db50d --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
     
     # History ID des zweiten Workflows herauskriegen
-#    zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
-#    zi = [item.get('id') for item in zw]
-#    zi_element = zi[0]
-#    zi_element_string = str(zi_element)  
+    zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
+    zi = [item.get('id') for item in zw]
+    zi_element = zi[0]
+    zi_element_string = str(zi_element)  
 
     # Warte bis Durchgang vollzogen ist 
 #    time.sleep(z)
