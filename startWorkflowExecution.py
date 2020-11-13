@@ -177,9 +177,9 @@ for filename in data:
     gene_report = find_id_drei[10]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/galaxy-test/Download/UKER' + str(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
 
     #Warte kurz bis löschen von Histories losgeht
     time.sleep(m)
