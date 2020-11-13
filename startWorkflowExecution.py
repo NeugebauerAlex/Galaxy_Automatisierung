@@ -177,19 +177,19 @@ for filename in data:
     bi_element_string = str(bi_element)
 
     # Dataset ID finden und herunterladen
-    data_set_drei = gi.histories.show_history(bi_element, contents=False)
-    find_id_drei = data_set_drei['state_ids']['ok']
-    maf_report = find_id_drei[4]
-    annotation_report = find_id_drei[5]
-    gene_report = find_id_drei[10]
+#    data_set_drei = gi.histories.show_history(bi_element, contents=False)
+#    find_id_drei = data_set_drei['state_ids']['ok']
+#    maf_report = find_id_drei[4]
+#    annotation_report = find_id_drei[5]
+#    gene_report = find_id_drei[10]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
+#    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
+#    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
+#    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/home/neugebax/UKER' + str(l), use_default_filename=True)
 
     #Warte kurz bis löschen von Histories losgeht
-    time.sleep(m)
+#    time.sleep(m)
 
     # History löschen funktioniert
     gi.histories.delete_history(history_id=li_element, purge=True)
