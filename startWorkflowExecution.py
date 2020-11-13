@@ -107,7 +107,7 @@ data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
 
-    os.mkdir('/Download/UKER' + str(l))
+    os.mkdir('/galaxy-test/Download/UKER' + str(l))
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
