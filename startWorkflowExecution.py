@@ -107,7 +107,13 @@ data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
 
-    os.mkdir('/home/neugebax/UKER' + str(l))
+    # Wenn Ordner noch nicht existiert, erstelle einen
+    if not os.path.exists(os.path.dirname('/home/neugebax/UKER' + str(l))):
+        try:
+            os.makedirs(os.path.dirname('/home/neugebax/UKER' + str(l)))
+        except OSError as exc:  # Guard against race condition
+            if exc.errno != errno.EEXIST:
+                raise
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER" +str(l) +"run --forward_reads UKER" + str(
