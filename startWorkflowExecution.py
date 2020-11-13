@@ -104,7 +104,7 @@ class HistoryClient(Client):
         return self._get(id=history_id, contents=contents, params=params)
 
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
-os.mkdir('/home/neugebax/galaxy-test/Download/UKER' + str(l))
+os.mkdir('/UKER' + str(l))
 
 
 for filename in data:
