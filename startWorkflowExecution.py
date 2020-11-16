@@ -19,7 +19,6 @@ from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
 l = 26
-b = l
 m = 60
 z = 1200
 t = 9400
@@ -107,15 +106,11 @@ class HistoryClient(Client):
 data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
-
-    # Wenn Ordner noch nicht existiert, erstelle einen
-    if not os.path.exists(os.path.dirname('/home/neugebax/UKER' + str(b))):
-        try:
-            os.makedirs(os.path.dirname('/home/neugebax/UKER' + str(b)))
-        except OSError as exc:  # Guard against race condition
-            if exc.errno != errno.EEXIST:
-                raise
-    b += 1
+    
+    while l > 0:
+        path = '/home/neugebax/UKER {}'.format(l)
+        if not os.path.exists(path):
+            os.mkdir(path)
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER --forward_reads UKER" + str(
