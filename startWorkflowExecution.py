@@ -108,7 +108,7 @@ data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
     
-    while l > 0:
+    if l > 0:
         path = '/home/neugebax/UKER {}'.format(l)
         if not os.path.exists(path):
             os.mkdir(path)
