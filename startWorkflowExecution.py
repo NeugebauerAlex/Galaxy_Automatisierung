@@ -103,7 +103,7 @@ class HistoryClient(Client):
                 params['types'] = types
         return self._get(id=history_id, contents=contents, params=params)
 
-data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged-r.fastq.gz')
+data = glob.glob('/home/neugebax/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
 
