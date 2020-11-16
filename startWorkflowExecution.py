@@ -12,6 +12,7 @@ import logging
 import shlex
 import time
 from urllib.parse import urljoin
+from os.path import abspath
 
 var = True
 import bioblend
