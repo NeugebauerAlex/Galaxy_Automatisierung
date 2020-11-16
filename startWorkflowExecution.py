@@ -18,7 +18,7 @@ import bioblend
 from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
-l = 43
+l = 40
 m = 60
 z = 1200
 t = 8500
