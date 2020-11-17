@@ -11,7 +11,6 @@ import json
 import logging
 import shlex
 import time
-from urllib.parse import urljoin
 import os.path 
 
 var = True
@@ -19,7 +18,7 @@ import bioblend
 from bioblend import galaxy
 from bioblend.galaxy.client import Client
 
-l = 26
+l = 40 
 m = 60
 z = 1200
 t = 9400
@@ -116,7 +115,7 @@ for filename in data:
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER --forward_reads UKER" + str(
            l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
-            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=319886f37b7797fe --new_history_name UKER" + str(
+            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=f1b9846ab84237e7 --new_history_name UKER" + str(
            l))
     
 
@@ -139,7 +138,7 @@ for filename in data:
     input = (find_id_safe)
 
     os.system(
-      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key a7066326d337da43021b076aaf79124a --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=a03c847bfa9a8077 --new_history_name UKER_ZWEI"%input)
+      "python3 run_workflow_panel_variant_annotation.py --variants_input %s --dbsnp_annotations abafdf086c375ee5 --cancerhotspots_data__bed_ 74a1c2b9ba2a073a --civic_data__bed_ d513c0e53ab96eac --cgi_biomarkers__bed_ 3b06f51e28371f42 --api_key a7066326d337da43021b076aaf79124a --galaxy_url  http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=84ffe6fca6c4fbda --new_history_name UKER_ZWEI"%input)
     
     # History ID des zweiten Workflows herauskriegen
     zw = gi.histories.get_histories(history_id=None, name="UKER_ZWEI", deleted=False)
@@ -162,7 +161,7 @@ for filename in data:
     input = (find_id_safe_zwei)
     
     os.system(
-        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER --gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes c9213a53ccefcc61 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=8c959c9304a2bc4b --new_history_name UKER_DREI"%input)
+        "python3 run_workflow_panel_report_variant.py  --sample_identifier UKER --gemini_db_of_variants %s --uniprot_annotated_cancer_genes 07acaf50ebe1f533 --cgi_listed_genes 8aab8fda5bfd5997 --civic_genes c9213a53ccefcc61 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=6f91353f3eb0fa4a --new_history_name UKER_DREI"%input)
 
     # Warte bis Durchgang vollzogen ist 
     time.sleep(m)
