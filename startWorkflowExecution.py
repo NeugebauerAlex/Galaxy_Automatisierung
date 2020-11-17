@@ -103,12 +103,12 @@ class HistoryClient(Client):
                 params['types'] = types
         return self._get(id=history_id, contents=contents, params=params)
 
-data = glob.glob('/care/storage-normal/Galaxy_files/*_R1_merged.fastq.gz')
+data = glob.glob('/care/storage-normal/galaxy-test/*_R1_merged.fastq.gz')
 
 for filename in data:
     
     if l > 0:
-        path = '/care/storage-normal/Galaxy_files/UKER{}'.format(l)
+        path = '/care/storage-normal/galaxy-test/UKER{}'.format(l)
         if not os.path.exists(path):
             os.mkdir(path)
 
