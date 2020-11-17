@@ -194,4 +194,3 @@ for filename in data:
     gi.histories.delete_history(history_id=bi_element, purge=True)
 
     l += 1
-
