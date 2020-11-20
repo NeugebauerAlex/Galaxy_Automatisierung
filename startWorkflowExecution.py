@@ -103,12 +103,12 @@ class HistoryClient(Client):
                 params['types'] = types
         return self._get(id=history_id, contents=contents, params=params)
 
-data = glob.glob('/care/storage-normal/galaxy-test/*_R1_merged.fastq.gz')
+data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged.fastq.gz')
 
 for filename in data:
     
     if l > 0:
-        path = '/care/storage-normal/galaxy-test/UKER{}'.format(l)
+        path = '/care/storage-normal/galaxy-master/UKER{}'.format(l)
         if not os.path.exists(path):
             os.mkdir(path)
 
@@ -180,9 +180,9 @@ for filename in data:
     gene_report = find_id_drei[10]
 
     # Lade das Dataset herunter
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/care/storage-normal/Galaxy_files/UKER{}'.format(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/care/storage-normal/Galaxy_files/UKER{}'.format(l), use_default_filename=True)
-    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/care/storage-normal/Galaxy_files/UKER{}'.format(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=maf_report, file_path='/care/storage-normal/galaxy-master/UKER{}'.format(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=annotation_report, file_path='/care/storage-normal/galaxy-master/UKER{}'.format(l), use_default_filename=True)
+    gi.histories.download_dataset(history_id=bi_element, dataset_id=gene_report, file_path='/care/storage-normal/galaxy-master/UKER{}'.format(l), use_default_filename=True)
 
     #Warte kurz bis löschen von Histories losgeht
     time.sleep(m)
