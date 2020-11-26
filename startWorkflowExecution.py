@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # -*- coding: utf8 -*-
-print('Anfang')
 
 import os
 import glob
@@ -15,27 +14,18 @@ import time
 import os.path 
 from urllib.parse import urljoin
 
-print('Hallo')
-
 var = True
 import bioblend
 from bioblend import galaxy
 from bioblend.galaxy.client import Client
-
-print('0')
 
 l = 40 
 m = 60
 z = 1200
 t = 9400
 
-print('1')
-
 gi = galaxy.GalaxyInstance(url='http://srv-ap-omics1.srv.uk-erlangen.de/', key='a7066326d337da43021b076aaf79124a')
-print('2')
 hl = gi.histories.get_histories()
-print('3')
-
 
 class DatasetClient(Client):
 
@@ -66,7 +56,6 @@ class DatasetClient(Client):
                                                  file_path=file_local_path,
                                                  use_default_filename=False)
 
-print('4')
 
 class HistoryClient(Client):
     
@@ -115,7 +104,6 @@ class HistoryClient(Client):
                 params['types'] = types
         return self._get(id=history_id, contents=contents, params=params)
 
-print('5')
 
 os.chdir('/care/storage-normal/galaxy-master/')
 currentDirectory = os.getcwd()
@@ -128,13 +116,10 @@ print('6')
 
 for filename in data:
 
-    print('7')
-
     if l > 0:
         path = '/care/storage-normal/galaxy-master/UKER{}'.format(l)
         if not os.path.exists(path):
             os.mkdir(path)
-    print('8')
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER --forward_reads UKER" + str(
@@ -142,7 +127,6 @@ for filename in data:
             l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=f1b9846ab84237e7 --new_history_name UKER" + str(
            l))
     
-    print('9')
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
