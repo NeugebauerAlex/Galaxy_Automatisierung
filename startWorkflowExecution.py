@@ -105,7 +105,7 @@ class HistoryClient(Client):
         return self._get(id=history_id, contents=contents, params=params)
 
 
-data = glob.glob('/care/storage-normal/galaxy-test/*_R1_merged_fastq.gz')
+data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged_fastq.gz')
 
 print(data)
 print('6')
