@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf8 -*-
+print('Anfang')
 
 import os
 import glob
@@ -14,6 +15,7 @@ import time
 import os.path 
 from urllib.parse import urljoin
 
+print('Hallo')
 var = True
 import bioblend
 from bioblend import galaxy
