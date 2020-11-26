@@ -118,6 +118,8 @@ class HistoryClient(Client):
 print('5')
 
 os.chdir('/care/storage-normal/galaxy-master/')
+currentDirectory = os.getcwd()
+print(currentDirectory)
 data = glob.glob('*_R1_merged.fastq.gz')
 
 print(data)
