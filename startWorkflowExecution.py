@@ -16,6 +16,7 @@ import os.path
 from urllib.parse import urljoin
 
 print('Hallo')
+
 var = True
 import bioblend
 from bioblend import galaxy
@@ -119,7 +120,8 @@ print('5')
 data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged.fastq.gz')
 
 print('6')
-
+print(data)
+print(filename)
 for filename in data:
 
     print('7')
