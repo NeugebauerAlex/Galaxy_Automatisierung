@@ -107,9 +107,6 @@ class HistoryClient(Client):
 
 data = glob.glob('/care/storage-normal/galaxy-test/*_R1_merged_fastq.gz')
 
-print(data)
-print('6')
-
 
 for filename in data:
 
