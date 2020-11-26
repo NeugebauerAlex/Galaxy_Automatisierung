@@ -122,13 +122,13 @@ print('6')
 
 for filename in data:
 
-print('7')
+    print('7')
 
     if l > 0:
         path = '/care/storage-normal/galaxy-master/UKER{}'.format(l)
         if not os.path.exists(path):
             os.mkdir(path)
-print('8')
+    print('8')
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER --forward_reads UKER" + str(
@@ -136,7 +136,7 @@ print('8')
             l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=f1b9846ab84237e7 --new_history_name UKER" + str(
            l))
     
-print('9')
+    print('9')
 
     hh = gi.histories.get_histories(history_id=None, name="UKER" +str(l), deleted=False)
     li = [item.get('id') for item in hh]
