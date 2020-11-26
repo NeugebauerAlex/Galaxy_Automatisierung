@@ -107,9 +107,11 @@ class HistoryClient(Client):
 
 data = glob.glob('/care/storage-normal/galaxy-test/*_R1_merged_fastq.gz')
 
-
+print(data)
+print('6')
 for filename in data:
 
+    print('7')
     if l > 0:
         path = '/care/storage-normal/galaxy-master/UKER{}'.format(l)
         if not os.path.exists(path):
