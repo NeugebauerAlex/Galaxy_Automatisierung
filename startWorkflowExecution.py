@@ -117,7 +117,8 @@ class HistoryClient(Client):
 
 print('5')
 
-data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged.fastq.gz')
+os.chdir('/care/storage-normal/galaxy-master/')
+data = glob.glob('*_R1_merged.fastq.gz')
 
 print(data)
 print('6')
