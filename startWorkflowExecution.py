@@ -107,11 +107,9 @@ class HistoryClient(Client):
 
 data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged_fastq.gz')
 
-print(data)
-print('6')
+
 for filename in data:
 
-    print('7')
     if l > 0:
         path = '/care/storage-normal/galaxy-master/UKER{}'.format(l)
         if not os.path.exists(path):
@@ -119,8 +117,8 @@ for filename in data:
 
     os.system(
         "python3 run_workflow_panel_main.py --sample_name UKER --forward_reads UKER" + str(
-           l) + "_R1_merged.fastq.gz --reverse_reads UKER" + str(
-            l) + "_R2_merged.fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=f1b9846ab84237e7 --new_history_name UKER" + str(
+           l) + "_R1_merged_fastq.gz --reverse_reads UKER" + str(
+            l) + "_R2_merged_fastq.gz --dbsnp_records abafdf086c375ee5 --api_key a7066326d337da43021b076aaf79124a --galaxy_url http://srv-ap-omics1.srv.uk-erlangen.de/ --workflow_id_override=f1b9846ab84237e7 --new_history_name UKER" + str(
            l))
     
 
