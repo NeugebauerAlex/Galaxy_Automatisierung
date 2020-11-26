@@ -119,9 +119,10 @@ print('5')
 
 data = glob.glob('/care/storage-normal/galaxy-master/*_R1_merged.fastq.gz')
 
-print('6')
 print(data)
-print(filename)
+print('6')
+
+
 for filename in data:
 
     print('7')
